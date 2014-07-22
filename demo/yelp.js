@@ -1,8 +1,8 @@
 var yelp = require("../index").createClient({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  token: process.env.TOKEN,
-  token_secret: process.env.TOKEN_SECRET,
+  consumer_key: "_lcxOBpRig586ClN4MGfEw",
+  consumer_secret: "nA3AKaOaPwdh1C10EDbWam_BeA8",
+  token: "ljPYnmTKOv5rqyC7Bd3sSMF2p6EwStEL",
+  token_secret: "7jVVs81exTyrxLVohdPkVyFD7s0",
   ssl: true
 });
 
