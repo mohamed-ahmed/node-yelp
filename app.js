@@ -38,9 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
+app.get('/placesText', routes.placesText);
+app.get('/placesCoords', routes.placesCoords);
 app.get('/', routes.index);
-app.get('/places*', routes.places);
+
 
 server.listen(PORT);
 

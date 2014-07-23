@@ -5,24 +5,42 @@ $(document).ready(function(){
 	$("#submit-button").click(function(){
 		var val = $("#search-box").val();
 		if(val.length > 0){
-			getResults(val);
+			getTextResults(val);
 		}
 	});
 
 	//getResults();
+	function getLocation(callback, x) {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(callback);
+		} else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+	function getCoordsResults(position) {
+
+		var lcoationQuery = "" + position.coords.latitude + "," + position.coords.longitude;
+		$.ajax({
+			url : "/placesCoords?" + encodeURI("coords=" + lcoationQuery),
+			success : onResultsResponse,
+		});
+	}
+
+	getLocation(getCoordsResults);
 
 
 });
 
 
-function getResults(params){
+function getTextResults(params){
 	$.ajax({
-		url : "/places?" + encodeURI("address=" + params),
+		url : "/placesText?" + encodeURI("address=" + params),
 		success : onResultsResponse,
 	});
 }
 
 function onResultsResponse(data){
+	$(".place").remove();
 	console.log(data);
 	data.businesses.forEach(function(elem){
 		addPlaceToDom(elem);
@@ -52,15 +70,29 @@ function addPlaceToDom(place){
 			categories += " ";
 		}
 	});
+
+	var cal = ics();
+	var subject = "Eat With Friends at " + place.name;
+	var description = "Send this calendar entry to invite other friends or edit time and date";
+	var location = place.location.address[0] + ", " + place.location.city;
+	var begin = (new Date()).getTime() + 60*60;
+	var end = begin+60*60;
+	cal.addEvent(subject, description, location, begin, end);
+	 
+
 	var elem =
 	dom("div", {class:"place row  count" + count%2, },
 		dom("div", {class:"place-inner"},
-			dom("div", {class : "place-text col-md-8"}, 
-				dom("p", null, document.createTextNode(place.name)),
-				dom("p", null, document.createTextNode(categories))
+			dom("div", {class : "place-text col-xs-4 col-sm-4 col-md-4"}, 
+				dom("p", { class : "name-text" }, document.createTextNode(place.name)),
+				dom("p", {class : "category-text"}, document.createTextNode(categories)),
+				dom("p", {class : "distance-text"}, document.createTextNode( "" + (place.distance/1000).toFixed(2) + " km away" ))
 			),
-			dom("div", {class:"place-image-wrapper col-md-4 "},
-				dom("img", {class:"place-image pull-right", src : image_url })
+			dom("a", {class : "calendar-icon-wrapper col-xs-4 col-sm-4 col-nd-4"},
+				dom("img", {class:"calendar-icon", src: "images/calendar_icon.png"})
+			),
+			dom("div", {class:"place-image-wrapper col-xs-4 col-sm-4 col-md-4"},
+				dom("img", {class:"place-image pull-right", src : image_url})
 			)
 
 		)
@@ -68,6 +100,10 @@ function addPlaceToDom(place){
 
 
 	$("#places-area").append(elem);
+
+	$(elem).find(".calendar-icon").click(function(){
+		cal.download();
+	});
 
 	count++;
 }

@@ -31,7 +31,8 @@ exports.index = function(req, res){
 	res.render('index', { title: 'BigBlueButton HTML5 Client API Mate' });
 };
 
-exports.places = function(req, res){
+exports.placesText = function(req, res, data){
+	console.log(data);
 	console.log("req.query: ");
 	console.log(req.query);
 	var searchLocation = req.query.address;
@@ -43,4 +44,19 @@ exports.places = function(req, res){
 		console.log("\ndone request");
 	});
 };
+
+exports.placesCoords = function(req, res, data){
+	console.log(data);
+	console.log("req.query: ");
+	console.log(req.query);
+	var searchLocation = req.query.coords;
+	console.log("got places request");
+	yelp.search({term: "food", ll: searchLocation }, function(error, data) {
+		console.log(error);
+		console.log(data);
+		res.send(data);
+		console.log("\ndone request");
+	});
+};
+
 
