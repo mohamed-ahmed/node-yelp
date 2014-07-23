@@ -3,10 +3,10 @@ extends layout
 block content
 	nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
 		a.navbar-brand(href='#' id="title") Eat with Friends
-		form.navbar-form.navbar-left(role='search' class="pull-right")
+		form.navbar-form.navbar-left(class="pull-right" action="#")
 			div.form-group
-				input.form-control(type='text', placeholder='Search' id="search-box")
-			div.btn.btn-default(type='submit' id="submit-button") Submit
+				input.form-control(action="#" type='text', placeholder='Search' id="search-box" onkeydown="if (event.keyCode == 13) document.getElementById('submit-button').click()")
+			div.btn.btn-default( id="submit-button") Submit
 
 
 

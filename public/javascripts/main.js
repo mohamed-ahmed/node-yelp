@@ -9,6 +9,13 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#submit-button").keyup(function(e){
+	    if(e.which == 13){
+	    	e.preventDefault()
+	        $("#submit-button").click();
+	    }
+	});
+
 	//getResults();
 	function getLocation(callback, x) {
 		if (navigator.geolocation) {
@@ -90,7 +97,7 @@ function addPlaceToDom(place){
 			dom("div", {class : "place-text col-xs-4 col-sm-4 col-md-4"}, 
 				dom("p", { class : "name-text" }, document.createTextNode(place.name)),
 				dom("p", {class : "category-text"}, document.createTextNode(categories)),
-				dom("p", {class : "distance-text"}, document.createTextNode( "" + (place.distance/1000).toFixed(2) + " km away" ))
+				dom("p", {class : "distance-text"}, document.createTextNode( place.distance ? "" + (place.distance/1000).toFixed(2) + " km away" : "" ))
 			),
 			dom("a", {class : "calendar-icon-wrapper col-xs-4 col-sm-4 col-nd-4"},
 				dom("img", {class:"calendar-icon", src: "images/calendar_icon.png"})
