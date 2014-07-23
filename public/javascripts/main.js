@@ -9,7 +9,7 @@ $(document).ready(function(){
 		}
 	});
 
-	getResults();
+	//getResults();
 
 
 });
@@ -17,8 +17,8 @@ $(document).ready(function(){
 
 function getResults(params){
 	$.ajax({
-		url : "places",
-		success : onResultsResponse
+		url : "/places?" + encodeURI("address=" + params),
+		success : onResultsResponse,
 	});
 }
 
@@ -33,6 +33,15 @@ function onResultsResponse(data){
 var count = 0;
 
 function addPlaceToDom(place){
+
+	var image_url
+	if(place.image_url){
+		image_url = place.image_url;
+	}
+	else{
+		image_url = ("/images/restaurant.png");
+	}
+
 	var categories = "";
 	place.categories.forEach(function(elem, index){
 		categories += elem[0];
@@ -51,7 +60,7 @@ function addPlaceToDom(place){
 				dom("p", null, document.createTextNode(categories))
 			),
 			dom("div", {class:"place-image-wrapper col-md-4 "},
-				dom("img", {class:"place-image pull-right", src : place.image_url })
+				dom("img", {class:"place-image pull-right", src : image_url })
 			)
 
 		)

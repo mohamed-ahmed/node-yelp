@@ -13,7 +13,7 @@ var yelp = require("../index").createClient({
 });
 
 
-yelp.search({term: "food", location: "Montreal"}, function(error, data) {
+/*yelp.search({term: "food", location: "Montreal"}, function(error, data) {
   console.log(error);
   console.log(data);
 });
@@ -21,7 +21,7 @@ yelp.search({term: "food", location: "Montreal"}, function(error, data) {
 yelp.business("yelp-san-francisco", function(error, data) {
   console.log(error);
   console.log(data);
-});
+});*/
 
 
 
@@ -32,8 +32,11 @@ exports.index = function(req, res){
 };
 
 exports.places = function(req, res){
+	console.log("req.query: ");
+	console.log(req.query);
+	var searchLocation = req.query.address;
 	console.log("got places request");
-	yelp.search({term: "food", location: "Montreal"}, function(error, data) {
+	yelp.search({term: "food", location: searchLocation }, function(error, data) {
 		console.log(error);
 		console.log(data);
 		res.send(data);

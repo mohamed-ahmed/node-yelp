@@ -40,7 +40,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/places', routes.places);
+app.get('/places*', routes.places);
 
 server.listen(PORT);
 
