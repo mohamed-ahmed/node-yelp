@@ -2,6 +2,12 @@
 
 $(document).ready(function(){
 
+	$("#submit-button").click(function(){
+		var val = $("#search-box").val();
+		if(val.length > 0){
+			getResults(val);
+		}
+	});
 
 	getResults();
 
@@ -9,7 +15,7 @@ $(document).ready(function(){
 });
 
 
-function getResults(){
+function getResults(params){
 	$.ajax({
 		url : "places",
 		success : onResultsResponse

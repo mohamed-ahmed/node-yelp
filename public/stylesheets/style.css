@@ -12,6 +12,17 @@ body {
 	margin-top: 5px;
 }
 
+#search-box{
+	margin-top: 5px;
+	border-top-right-radius : 0px;
+	border-bottom-right-radius : 0px;
+}
+
+#submit-button{
+	border-top-left-radius : 0px;
+	border-bottom-left-radius : 0px;
+}
+
 a {
   color: #00B7FF;
 }
@@ -86,4 +97,5 @@ a {
 
 .place-text{
 	margin-top: 10px;
+	font-size: 30px;
 }
