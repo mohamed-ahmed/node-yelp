@@ -1,7 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+
 body {
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #fe6e6b !important;
+}
+
+#title{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 50px;
+	margin-top: 5px;
 }
 
 a {
@@ -63,6 +71,8 @@ a {
 	margin-right: 10px;
 	height:100px;
 	width:100px;
+	border: solid;
+	border-color: white
 }
 
 
@@ -72,4 +82,8 @@ a {
 
 .count1{
 	background-color: #B22222;
+}
+
+.place-text{
+	margin-top: 10px;
 }
