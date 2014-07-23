@@ -75,9 +75,13 @@ function addPlaceToDom(place){
 	var subject = "Eat With Friends at " + place.name;
 	var description = "Send this calendar entry to invite other friends or edit time and date";
 	var location = place.location.address[0] + ", " + place.location.city;
-	var begin = (new Date()).getTime() + 60*60;
-	var end = begin+60*60;
+	var begin = new Date((new Date()).getTime() + 60*60*1000);
+	var end = new Date(begin.getTime()+60*60*1000);
+	console.log(begin);
+	console.log(end);
 	cal.addEvent(subject, description, location, begin, end);
+
+	console.log(cal);
 	 
 
 	var elem =
