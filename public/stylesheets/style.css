@@ -74,7 +74,7 @@ a {
 }
 
 #places-area{
-	margin-top: 170px;
+	/*margin-top: 170px;*/
 }
 
 .place-image{
@@ -143,3 +143,14 @@ a {
 /*.place-text, .place-image-wrapper, .calendar-icon-wrapper{
 	border: solid;
 }*/
+
+#description-text{
+	margin-top: 170px;
+}
+
+@media (min-width: 768px) {
+
+	#description-text{
+		margin-top: 80px;
+	}
+}
