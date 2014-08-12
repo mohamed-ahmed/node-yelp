@@ -2,19 +2,18 @@ Web app that uses Yelp API to dispaly local restaurants by type and location in 
 
 ##Installation: 
 
-clone
-
-
+*       clone
+*       Go into project root directory
 
         cd node-yelp
     
-run
+*       run
 
 
         npm install
         
-run 
+*       run 
         
         node app.js
         
-open localhost:3000 in browser
+*       open localhost:3000 in browser
