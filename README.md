@@ -4,9 +4,16 @@ Installation:
 
 1. clone
 2.
-    cd node-yelp
-3. run 
-    npm install
+
+        cd node-yelp
+    
+3. run
+
+
+        npm install
+        
 4. run 
-    node app.js
+        
+        node app.js
+
 5. open localhost:3000 in browser
