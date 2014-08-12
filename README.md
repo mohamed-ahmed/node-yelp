@@ -3,6 +3,7 @@ Web app that uses Yelp API to dispaly local restaurants by type and location in 
 Installation: 
 
 1. clone
+
 2.
 
         cd node-yelp
