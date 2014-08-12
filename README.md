@@ -7,12 +7,12 @@ Web app that uses Yelp API to dispaly local restaurants by type and location in 
 
         cd node-yelp
     
-* run
+* run...
 
 
         npm install
         
-* run 
+* run... 
         
         node app.js
         
